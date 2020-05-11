@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sidney.cursomc.domain.Categoria;
+import com.sidney.cursomc.domain.Categorias;
 import com.sidney.cursomc.repositories.CategoriaRepository;
 
 @Service
@@ -15,8 +15,8 @@ public class CateogiraService {
 	private CategoriaRepository repo;
 	
 
-	public Categoria buscar(Integer id) {
-		Optional<Categoria> obj = repo.findById(id);
+	public Categorias buscar(Integer id) {
+		Optional<Categorias> obj = repo.findById(id);
 		return obj.orElse(null);
 	}
 	

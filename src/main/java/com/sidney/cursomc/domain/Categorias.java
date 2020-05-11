@@ -1,15 +1,18 @@
 package com.sidney.cursomc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class Categoria implements Serializable{
+public class Categorias implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -17,13 +20,26 @@ public class Categoria implements Serializable{
 	private Integer id;
 	@Column(name = "Nome")
 	public String nome;
+	
+	@ManyToMany(mappedBy = "categorias")
+	private List<Produtos> produtos = new ArrayList<Produtos>();
 
-	public Categoria() {
+	public List<Produtos> getProdutos() {
+		return produtos;
+	}
+
+
+	public void setProdutos(List<Produtos> produtos) {
+		this.produtos = produtos;
+	}
+
+
+	public Categorias() {
 		
 	}
 	
 	
-	public Categoria(Integer id, String nome) {
+	public Categorias(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -70,7 +86,7 @@ public class Categoria implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Categoria other = (Categoria) obj;
+		Categorias other = (Categorias) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

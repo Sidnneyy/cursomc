@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sidney.cursomc.domain.Categoria;
+import com.sidney.cursomc.domain.Categorias;
 import com.sidney.cursomc.services.CateogiraService;
 
 @RestController
@@ -20,7 +20,7 @@ public class CategoriaResouce {
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
 	public ResponseEntity <?> fing(@PathVariable Integer id) {
 		
-		Categoria obj = service.buscar(id);
+		Categorias obj = service.buscar(id);
 		
 		return ResponseEntity.ok().body(obj);
 	}
